@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Online Railway Reservation System</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f9;
+            margin: 0;
+        }
+
+        header {
+            background: #003366;
+            color: white;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .container {
+            width: 400px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px gray;
+        }
+
+        h2 {
+            text-align: center;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+
+        button {
+            margin-top: 15px;
+            width: 100%;
+            padding: 10px;
+            background: #0066cc;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #004080;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        hr {
+            margin: 15px 0;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🚆 Online Railway Reservation System</h1>
+</header>
+
+<!-- SEARCH SECTION -->
+<div class="container" id="searchSection">
+    <h2>Search Train</h2>
+
+    <label>From:</label>
+    <input type="text" id="from">
+
+    <label>To:</label>
+    <input type="text" id="to">
+
+    <label>Date:</label>
+    <input type="date" id="date">
+
+    <label>Class:</label>
+    <select id="travelClass">
+        <option value="Sleeper">Sleeper</option>
+        <option value="3AC">3AC</option>
+        <option value="2AC">2AC</option>
+    </select>
+
+    <button onclick="goToBooking()">Search Train</button>
+</div>
+
+<!-- BOOKING SECTION -->
+<div class="container hidden" id="bookingSection">
+    <h2>Passenger Details</h2>
+
+    <label>Name:</label>
+    <input type="text" id="name">
+
+    <label>Age:</label>
+    <input type="number" id="age">
+
+    <label>Gender:</label>
+    <select id="gender">
+        <option>Male</option>
+        <option>Female</option>
+    </select>
+
+    <button onclick="generateTicket()">Confirm Booking</button>
+</div>
+
+<!-- TICKET SECTION -->
+<div class="container hidden" id="ticketSection">
+    <h2>🎟 Ticket Confirmation</h2>
+    <div id="ticketDetails"></div>
+</div>
+
+<script>
+    let fare = 0;
+
+    function goToBooking() {
+        let from = document.getElementById("from").value;
+        let to = document.getElementById("to").value;
+        let date = document.getElementById("date").value;
+        let travelClass = document.getElementById("travelClass").value;
+
+        if (from === "" || to === "" || date === "") {
+            alert("Please fill all fields!");
+            return;
+        }
+
+        if (from === to) {
+            alert("From and To stations cannot be same!");
+            return;
+        }
+
+        if (travelClass === "Sleeper") fare = 300;
+        if (travelClass === "3AC") fare = 800;
+        if (travelClass === "2AC") fare = 1200;
+
+        localStorage.setItem("from", from);
+        localStorage.setItem("to", to);
+        localStorage.setItem("date", date);
+        localStorage.setItem("class", travelClass);
+        localStorage.setItem("fare", fare);
+
+        document.getElementById("searchSection").classList.add("hidden");
+        document.getElementById("bookingSection").classList.remove("hidden");
+    }
+
+    function generateTicket() {
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+        let gender = document.getElementById("gender").value;
+
+        if (name === "" || age === "") {
+            alert("Please fill passenger details!");
+            return;
+        }
+
+        if (age <= 0) {
+            alert("Invalid Age!");
+            return;
+        }
+
+        let pnr = Math.floor(1000000000 + Math.random() * 9000000000);
+        let seat = "S" + Math.floor(Math.random() * 100);
+
+        let ticketHTML = `
+            <p><strong>PNR Number:</strong> ${pnr}</p>
+            <p><strong>Name:</strong> ${name}</p>
+            <p><strong>Age:</strong> ${age}</p>
+            <p><strong>Gender:</strong> ${gender}</p>
+            <hr>
+            <p><strong>From:</strong> ${localStorage.getItem("from")}</p>
+            <p><strong>To:</strong> ${localStorage.getItem("to")}</p>
+            <p><strong>Date:</strong> ${localStorage.getItem("date")}</p>
+            <p><strong>Class:</strong> ${localStorage.getItem("class")}</p>
+            <p><strong>Seat No:</strong> ${seat}</p>
+            <p><strong>Total Fare:</strong> ₹${localStorage.getItem("fare")}</p>
+        `;
+
+        document.getElementById("bookingSection").classList.add("hidden");
+        document.getElementById("ticketSection").classList.remove("hidden");
+        document.getElementById("ticketDetails").innerHTML = ticketHTML;
+    }
+</script>
+
+</body>
+</html>
