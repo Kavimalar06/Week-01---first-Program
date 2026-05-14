@@ -1,0 +1,152 @@
+PROGRAM 5
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Indian Railway Route Tracker</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+margin:0;
+
+/* TRAIN BACKGROUND */
+background-image:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* white overlay */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.85);
+z-index:-1;
+}
+
+h1{
+color:darkblue;
+margin-top:20px;
+}
+
+/* map container */
+
+.map-container{
+position:relative;
+display:inline-block;
+margin-top:20px;
+}
+
+.map-container img{
+width:700px;
+border:4px solid navy;
+border-radius:10px;
+}
+
+/* station markers */
+
+.marker{
+position:absolute;
+background:red;
+color:white;
+border:none;
+border-radius:50%;
+width:20px;
+height:20px;
+cursor:pointer;
+}
+
+.marker:hover{
+background:darkred;
+transform:scale(1.2);
+}
+
+/* info box */
+
+#info{
+margin-top:20px;
+font-size:18px;
+font-weight:bold;
+color:darkred;
+}
+
+</style>
+
+<script>
+
+function showStation(station){
+
+let message="";
+
+if(station=="chennai")
+message="🚆 Train currently at Chennai → Next Stop: Bangalore";
+
+else if(station=="bangalore")
+message="🚆 Train reached Bangalore → Next Stop: Hyderabad";
+
+else if(station=="hyderabad")
+message="🚆 Train reached Hyderabad → Next Stop: Delhi";
+
+else if(station=="delhi")
+message="🚆 Train arrived at Delhi Junction (Final Destination)";
+
+document.getElementById("info").innerHTML=message;
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>🚆 Indian Railway Route Tracker</h1>
+
+<p>Click a station to see the train route</p>
+
+<div class="map-container">
+
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRT9QCch94pAgSVg9qTVRc6HUW9t4oc22q8YA&s">
+
+<!-- Chennai -->
+<button class="marker"
+style="left:470px; top:430px;"
+onclick="showStation('chennai')">
+</button>
+
+<!-- Bangalore -->
+<button class="marker"
+style="left:430px; top:400px;"
+onclick="showStation('bangalore')">
+</button>
+
+<!-- Hyderabad -->
+<button class="marker"
+style="left:420px; top:350px;"
+onclick="showStation('hyderabad')">
+</button>
+
+<!-- Delhi -->
+<button class="marker"
+style="left:380px; top:200px;"
+onclick="showStation('delhi')">
+</button>
+
+</div>
+
+<div id="info">
+Click a station to track the train
+</div>
+
+</body>
+
+</html>
