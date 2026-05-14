@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Online Railway Reservation System</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3") no-repeat center center/cover;
+}
+
+/* Header */
+
+header{
+background:#0b0b9c;
+color:white;
+text-align:center;
+padding:20px;
+font-size:32px;
+font-weight:bold;
+}
+
+/* Layout */
+
+.container{
+display:flex;
+height:90vh;
+}
+
+/* Left Menu */
+
+.menu{
+width:220px;
+background:rgba(255,255,255,0.85);
+padding:20px;
+}
+
+.menu button{
+width:100%;
+padding:12px;
+margin-bottom:12px;
+background:#20a6d4;
+color:white;
+border:none;
+font-size:16px;
+cursor:pointer;
+}
+
+.menu button:hover{
+background:#178bb1;
+}
+
+/* Content Area */
+
+.content{
+flex:1;
+padding:30px;
+background:rgba(255,255,255,0.85);
+overflow:auto;
+}
+
+/* Login Box */
+
+.loginbox{
+width:320px;
+background:white;
+padding:20px;
+border-radius:8px;
+box-shadow:0 5px 15px rgba(0,0,0,0.3);
+margin:auto;
+}
+
+input,select{
+width:100%;
+padding:8px;
+margin:6px 0;
+}
+
+/* Train Cards */
+
+.trains{
+display:flex;
+gap:20px;
+flex-wrap:wrap;
+}
+
+.card{
+width:250px;
+background:white;
+padding:10px;
+border-radius:8px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+}
+
+.card img{
+width:100%;
+border-radius:6px;
+}
+
+/* Booking Form */
+
+form{
+width:420px;
+background:#f4f9ff;
+padding:20px;
+border-radius:10px;
+}
+
+button.submit{
+background:green;
+color:white;
+padding:10px;
+border:none;
+width:100%;
+cursor:pointer;
+}
+
+</style>
+
+<script>
+
+/* LOGIN PAGE */
+
+function showLogin(){
+
+document.getElementById("content").innerHTML=
+
+`<div class="loginbox">
+
+<h2>Passenger Login</h2>
+
+Name
+<input type="text">
+
+Gender
+<select>
+<option>Male</option>
+<option>Female</option>
+</select>
+
+Date of Birth
+<input type="date">
+
+Email
+<input type="email">
+
+Password
+<input type="password">
+
+<button class="submit">Login</button>
+
+</div>`;
+
+}
+
+/* TRAIN CATALOGUE */
+
+function showCatalogue(){
+
+document.getElementById("content").innerHTML=
+
+`<h2>Available Trains</h2>
+
+<div class="trains">
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee">
+<h3>Mountain Express</h3>
+<p>Chennai → Bangalore</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1474487548417-781cb71495f3">
+<h3>Royal Coach</h3>
+<p>Delhi → Mumbai</p>
+</div>
+
+<div class="card">
+<img src="https://images.unsplash.com/photo-1519677100203-a0e668c92439">
+<h3>Golden Chariot</h3>
+<p>Hyderabad → Goa</p>
+</div>
+
+</div>`;
+
+}
+
+/* REGISTER PAGE */
+
+function showRegister(){
+
+document.getElementById("content").innerHTML=
+
+`<h2>Ticket Booking</h2>
+
+<form>
+
+From Station
+<input type="text">
+
+To Station
+<input type="text">
+
+Journey Date
+<input type="date">
+
+No of Seats
+<input type="number">
+
+Class
+<select>
+<option>Sleeper</option>
+<option>AC 2 Tier</option>
+<option>AC First Class</option>
+</select>
+
+<button class="submit">Pay And Book</button>
+
+</form>`;
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+<header>
+ONLINE RAILWAY RESERVATION SYSTEM
+</header>
+
+<div class="container">
+
+<div class="menu">
+
+<button onclick="showLogin()">Login</button>
+
+<button onclick="showCatalogue()">Train Catalogue</button>
+
+<button onclick="showRegister()">Register</button>
+
+</div>
+
+<div class="content" id="content">
+
+<h2>Welcome to Online Railway Reservation</h2>
+<p>Select an option from the menu.</p>
+
+</div>
+
+</div>
+
+</body>
+</html>
+
