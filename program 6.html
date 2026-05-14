@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Railway Booking Portal</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3") no-repeat center/cover;
+color:white;
+}
+
+/* dark overlay */
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.65);
+z-index:-1;
+}
+
+/* header */
+
+header{
+display:flex;
+align-items:center;
+padding:15px 30px;
+background:rgba(0,0,0,0.6);
+}
+
+header img{
+width:45px;
+margin-right:10px;
+}
+
+/* navigation */
+
+nav{
+margin-left:auto;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+margin:15px;
+font-weight:bold;
+font-size:16px;
+}
+
+nav a:hover{
+color:cyan;
+}
+
+/* hero section */
+
+.hero{
+text-align:center;
+padding:150px 20px;
+}
+
+/* neon title */
+
+.hero h1{
+font-size:45px;
+color:#00ffff;
+text-shadow:
+0 0 5px #00ffff,
+0 0 10px #00ffff,
+0 0 20px #00ffff;
+animation:glow 2s infinite alternate;
+}
+
+@keyframes glow{
+
+from{
+text-shadow:0 0 10px #00ffff;
+}
+
+to{
+text-shadow:0 0 25px #00ffff,0 0 40px #00ffff;
+}
+
+}
+
+.hero p{
+font-size:20px;
+margin:20px;
+}
+
+/* buttons */
+
+button{
+padding:14px 26px;
+font-size:18px;
+background:#ff6600;
+color:white;
+border:none;
+border-radius:6px;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+background:#ff3300;
+transform:scale(1.08);
+}
+
+/* moving train */
+
+.train{
+position:fixed;
+bottom:15px;
+left:-300px;
+font-size:40px;
+animation:trainMove 12s linear infinite;
+}
+
+@keyframes trainMove{
+
+0%{ left:-300px; }
+
+100%{ left:110%; }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<img src="https://cdn-icons-png.flaticon.com/512/69/69524.png">
+
+<h2>Mountain Rail Reservation</h2>
+
+<nav>
+<a href="#">Home</a>
+<a href="#">Trains</a>
+<a href="#">Routes</a>
+<a href="#">Contact</a>
+<a href="program2.html">Login</a>
+</nav>
+
+</header>
+
+
+<div class="hero">
+
+<h1>🚆 Railway Booking Portal</h1>
+
+<p>
+Book your train tickets quickly and travel across scenic railway routes.
+</p>
+
+<p>
+Experience luxury coaches, beautiful journeys and secure reservations.
+</p>
+
+<button onclick="window.location.href='program2.html'">
+Book Your Ticket
+</button>
+
+</div>
+
+
+<div class="train">
+🚆🚃🚃🚃🚃
+</div>
+
+
+</body>
+</html>
+
