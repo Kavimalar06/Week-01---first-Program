@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Railway Reservation System</title>
+
+<style>
+
+body{
+font-family:Arial;
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3") no-repeat center/cover;
+overflow:hidden;
+}
+
+body::before{
+content:"";
+position:absolute;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.6);
+z-index:0;
+}
+
+.card{
+width:420px;
+padding:30px;
+border-radius:15px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(12px);
+box-shadow:0 0 25px black;
+text-align:center;
+z-index:2;
+}
+
+h2{
+color:#00eaff;
+margin-bottom:20px;
+}
+
+input,select{
+width:100%;
+padding:12px;
+margin:10px 0;
+border-radius:8px;
+border:none;
+font-size:15px;
+}
+
+button{
+width:100%;
+padding:12px;
+background:#28a745;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+font-size:16px;
+}
+
+button:hover{
+background:#1e7e34;
+}
+
+#otpBox{
+display:none;
+}
+
+#reservation{
+display:none;
+}
+
+#ticketPage{
+display:none;
+}
+
+.ticketBox{
+background:white;
+padding:20px;
+border-radius:10px;
+color:black;
+}
+
+.ticketBox p{
+font-size:17px;
+margin:6px 0;
+}
+
+.trainTrack{
+position:absolute;
+bottom:0;
+left:-300px;
+font-size:40px;
+animation:trainMove 14s linear infinite;
+}
+
+@keyframes trainMove{
+
+0%{left:-300px;}
+
+100%{left:110%;}
+
+}
+
+</style>
+
+
+<script>
+
+let generatedOTP="";
+
+function sendOTP(){
+
+let email=document.getElementById("email").value;
+
+if(email==""){
+alert("Enter email first");
+return;
+}
+
+generatedOTP=Math.floor(1000+Math.random()*9000);
+
+alert("Demo OTP: "+generatedOTP);
+
+document.getElementById("otpBox").style.display="block";
+
+}
+
+function verifyOTP(){
+
+let entered=document.getElementById("otp").value;
+
+if(entered==generatedOTP){
+
+document.getElementById("login").style.display="none";
+document.getElementById("reservation").style.display="block";
+
+}
+
+else{
+
+alert("Incorrect OTP");
+
+}
+
+}
+
+function bookTicket(){
+
+let name=document.getElementById("name").value;
+let from=document.getElementById("from").value;
+let to=document.getElementById("to").value;
+let date=document.getElementById("date").value;
+let seats=document.getElementById("seats").value;
+let cls=document.getElementById("class").value;
+
+document.getElementById("t_name").innerText=name;
+document.getElementById("t_from").innerText=from;
+document.getElementById("t_to").innerText=to;
+document.getElementById("t_date").innerText=date;
+document.getElementById("t_seats").innerText=seats;
+document.getElementById("t_class").innerText=cls;
+
+document.getElementById("reservation").style.display="none";
+document.getElementById("ticketPage").style.display="block";
+
+}
+
+</script>
+
+</head>
+
+
+<body>
+
+
+<!-- LOGIN PAGE -->
+
+<div class="card" id="login">
+
+<h2>🚆 Railway Login</h2>
+
+<input type="email" id="email" placeholder="Enter Email ID">
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<div id="otpBox">
+
+<input type="text" id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify OTP</button>
+
+</div>
+
+</div>
+
+
+<!-- RESERVATION PAGE -->
+
+<div class="card" id="reservation">
+
+<h2>🚆 Train Reservation</h2>
+
+<input type="text" id="name" placeholder="Passenger Name">
+
+<input type="text" id="from" placeholder="From Station">
+
+<input type="text" id="to" placeholder="To Station">
+
+<input type="date" id="date">
+
+<input type="number" id="seats" placeholder="No of Seats">
+
+<select id="class">
+<option>Sleeper</option>
+<option>AC 3 Tier</option>
+<option>AC 2 Tier</option>
+<option>First Class</option>
+</select>
+
+<button onclick="bookTicket()">Confirm Reservation</button>
+
+</div>
+
+
+<!-- TICKET CONFIRMATION PAGE -->
+
+<div class="card" id="ticketPage">
+
+<h2>🎫 Reservation Confirmed</h2>
+
+<div class="ticketBox">
+
+<p><b>Passenger:</b> <span id="t_name"></span></p>
+
+<p><b>From:</b> <span id="t_from"></span></p>
+
+<p><b>To:</b> <span id="t_to"></span></p>
+
+<p><b>Date:</b> <span id="t_date"></span></p>
+
+<p><b>Seats:</b> <span id="t_seats"></span></p>
+
+<p><b>Class:</b> <span id="t_class"></span></p>
+
+</div>
+
+<br>
+
+<h3>🚆 Have a Safe Journey!</h3>
+
+</div>
+
+
+<!-- TRAIN ANIMATION -->
+
+<div class="trainTrack">
+🚆🚃🚃🚃🚃
+</div>
+
+
+</body>
+</html>   
