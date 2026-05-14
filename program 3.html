@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Luxury Railway Experience</title>
+
+<style>
+
+body{
+font-family:Arial;
+text-align:center;
+margin:0;
+
+/* TRAIN BACKGROUND IMAGE */
+background-image:url("https://images.unsplash.com/photo-1474487548417-781cb71495f3");
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+}
+
+/* slight white overlay for readability */
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(255,255,255,0.75);
+z-index:-1;
+}
+
+h1{
+color:darkblue;
+margin-top:20px;
+}
+
+h3{
+color:#333;
+}
+
+button{
+padding:10px 20px;
+margin:10px;
+background:navy;
+color:white;
+border:none;
+border-radius:6px;
+font-weight:bold;
+cursor:pointer;
+}
+
+button:hover{
+background:darkred;
+transform:scale(1.05);
+}
+
+iframe{
+margin-top:20px;
+border:4px solid navy;
+border-radius:10px;
+background:white;
+}
+
+</style>
+
+<script>
+
+function showImage(url){
+
+let frame=document.getElementById("trainFrame");
+
+frame.srcdoc="<img src='"+url+"' width='700'>";
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<h1>🚆 Luxury Railway Experience</h1>
+
+<h3>Click a button to view train interiors</h3>
+
+<div>
+
+<button onclick="showImage('https://c.ndtvimg.com/2025-12/r21vln2o_travel_625x300_12_December_25.jpg?im=FeatureCrop,algorithm=dnn,width=545,height=307')">
+Mountain Train
+</button>
+
+<button onclick="showImage('https://assets.cntraveller.in/photos/66b59b0c32cc7c1a62d025bd/4:3/w_640%2Cc_limit/Venice-Simplon-Orient-Express-_VSOE-BAR-50.jpg')">
+Luxury Lounge
+</button>
+
+<button onclick="showImage('https://media.assettype.com/masalathai%2F2025-09-12%2Ff7eeptii%2Fpow-new2.jpeg?w=480&auto=format%2Ccompress&fit=max')">
+Royal Coach
+</button>
+
+<button onclick="showImage('https://c.ndtvimg.com/2025-10/7sksll2o_train_625x300_25_October_25.jpg')">
+Golden Chariot
+</button>
+
+<button onclick="showImage('https://images.unsplash.com/photo-1505693416388-ac5ce068fe85')">
+Train Bedroom
+</button>
+
+</div>
+
+<iframe id="trainFrame" width="700" height="450"></iframe>
+
+</body>
+
+</html>
+
